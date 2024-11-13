@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoExamShield</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            width: 300px;
+            background-color: #f0f0f0;
+        }
+        .form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .form.active {
+            display: block;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        input[type="email"], input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .switch-form {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .switch-form a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+        .api-key {
+            word-break: break-all;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-form" class="form active">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button id="login-button">Login</button>
+        <div class="switch-form">
+            Don't have an account? <a href="#" id="switch-to-register">Create one</a>
+        </div>
+    </div>
+
+    <div id="register-form" class="form">
+        <h2>Create Account</h2>
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Password" required>
+        <input type="text" id="register-api-key" placeholder="API Key" required>
+        <button id="register-button">Create Account</button>
+        <div class="switch-form">
+            Already have an account? <a href="#" id="switch-to-login">Login</a>
+        </div>
+    </div>
+
+    <div id="logged-in-form" class="form">
+        <h2>Welcome, <span id="email-display"></span>!</h2>
+        <p>Your API Key:</p>
+        <div class="api-key" id="api-key-display"></div>
+        <button id="logout-button">Logout</button>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+</body>
+</html>

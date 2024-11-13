@@ -1,0 +1,75 @@
+{
+  "manifest_version": 3,
+  "name": "NeoExamShield",
+  "version": "2.0.3",
+  "description": "To prevent malpractice, identifies and blocks third-party browser extensions during tests on the Iamneo portal. Now with secure API key management.",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["contentScript.js", "data/inject/chatOverlay.js", "data/inject/rightclickmenu.js", "data/inject/isolated.js", "data/inject/content.js", "data/inject/main.js", "data/lib/showdown.min.js"],
+      "exclude_matches": ["*://*.discord.com/*", "*://*.figma.com/*"],
+      "matches": ["http://*/*","https://*/*","*://vitcolab945.examly.io/*"]
+    }
+  ],
+  "icons": {
+    "128": "images/icon128.png",
+    "16": "images/icon16.png",
+    "48": "images/icon48.png"
+  },
+  "permissions": [
+    "management",
+    "tabs",
+    "activeTab",
+    "storage",
+    "scripting",
+    "contextMenus", 
+    "clipboardWrite", 
+    "clipboardRead",
+    "downloads", 
+    "windows"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "*://vitcolab945.examly.io/*"
+  ],
+  "commands": {
+    "search-mcq": {
+      "suggested_key": {
+        "default": "Alt+M"
+      },
+      "description": "Search MCQ"
+    },
+    "append-to-clipboard": {
+      "suggested_key": {
+        "default": "Alt+A"
+      },
+      "description": "Append selected text to clipboard"
+    },
+    "send-to-ai": {
+      "suggested_key": {
+        "default": "Alt+R"
+      },
+      "description": "Send clipboard content to AI"
+    },
+    "cycle-model": {
+      "suggested_key": {
+        "default": "Alt+B"
+      },
+      "description": "Cycle through AI models"
+    }
+  },
+  "content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self';"
+}
+}
